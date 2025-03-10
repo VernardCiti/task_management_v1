@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Layout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Add in head -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript> 
+  
+  <!-- In index.html -->
+<link rel="stylesheet" href="css/styles.css"><!-- Link to external CSS -->
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+  
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <!-- Replace with your actual profile image path -->
+        <img 
+          src="https://images.unsplash.com/photo-1618042164219-62c820f10723?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8fDA%3D"
+          class="profile-pic"
+          alt="Vernard Ngomane's profile picture"
+          loading="lazy"
+          decoding="async"
+          width="100"
+          height="100">
+        <h1 class="name">Vernard Ngomane</h1>
+      </div>
+      <hr>
+      <nav class="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#portfolio">Resume</a></li>
+          <!-- UPDATED: Link now points to #solutions instead of #contact -->
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- End Sidebar -->
+
+    <!-- Main Content -->
+    <main class="content">
+      
+      <!-- HOME TAB -->
+      <div id="home" class="tab-content">
+        <header>
+          <!-- Header Section -->
+          <div class="header">
+            <!-- Title Grouping -->
+            <div class="title-group">
+              <div class="role-pill-group">
+                <span class="role-pill ai">AI Engineer</span>
+                <span class="role-pill data">Data Scientist</span>
+                <span class="role-pill dev">Full-Stack Dev</span>
+              </div>
+              <h1 class="main-title">
+                Turning Chaos<br> 
+                <span class="gradient-text">Into Clarity</span>
+              </h1>
+            </div>
+          
+            <!-- Objective Statement -->
+            <div class="objective-stack">
+              <p class="objective">
+                <span class="highlight">I don't fix problems</span> — 
+                <span class="action-sequence">
+                  <span class="action">decode</span> •
+                  <span class="action">dismantle</span> •
+                  <span class="action">redesign</span>
+                </span>
+              </p>
+              <p class="core-mission">
+                <strong>Mission:</strong> Architect <span class="ai-mention">AI-driven solutions</span> that 
+                transform raw complexity into actionable systems.
+              </p>
+            </div>
+          
+            <!-- CTA Button -->
+            <!-- UPDATED: Button now points to #solutions -->
+            <div class="button-container">
+              <a href="#solutions" class="button">
+                Explore Portfolio Solutions
+                <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- End Header Section -->
+        </header>
+
+        <div>
+          <section class="vision" aria-label="vision_section">
+            <h2>Vision</h2>
+            <p>
+              <strong>Reimagining problem-solving through AI-first principles:</strong><br>
+              I architect solutions that blend cutting-edge technology with human-centric design. My focus spans three pillars:
+            </p>
+            <ul class="vision-list">
+              <li>🔍 <strong>Precision Analysis:</strong> Leveraging ML to uncover hidden patterns</li>
+              <li>🤖 <strong>Intelligent Automation:</strong> Building self-optimizing systems</li>
+              <li>🚀 <strong>Scalable Impact:</strong> Designing architectures that grow with your needs</li>
+            </ul>
+          </section>
+      
+          <!-- Technologies Section Redesign -->
+          <section class="technologies" aria-label="technologies_section">
+            <div class="tech-category">
+              <h3>Full Stack</h3>
+              <div class="tech-list">
+                <span class="tech-item">Java Object Oriented (OOP)</span>
+                <span class="tech-item">JavaScript |HTML|CSS</span>
+                <span class="tech-item">JQuery</span>
+                <span class="tech-item">Vue.js</span>
+                <span class="tech-item">React/Next.js</span>
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Django REST framework</span>
+                <span class="tech-item">Springboot framework</span>
+                <span class="tech-item">NoSQL and SQL</span>
+                <span class="tech-item">RESTful APIs</span>
+                <span class="tech-item">Data Visualization</span>
+                <span class="tech-item">Data Analysis</span>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3>AI/ML Stack</h3>
+              <div class="tech-list">
+                <span class="tech-item">Deep Learning</span>
+                <span class="tech-item">Generative AI</span>
+                <span class="tech-item">Machine Learning</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">PyTorch</span>
+                <span class="tech-item">OpenCV</span>
+                <span class="tech-item">HuggingFace</span>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3>Cloud & DevOps</h3>
+              <div class="tech-list">
+                <span class="tech-item">AWS/GCP</span>
+                <span class="tech-item">Kubernetes</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">CI/CD</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- END HOME TAB -->
+
+      <!-- PORTFOLIO TAB -->
+      <div id="portfolio" class="tab-content portfolio-section">
+        <div class="section-header">
+          <h1>Vernard Sharbney Ngomane</h1>
+          <p>Honours in Computer Science & Information Technology</p>
+        </div>
+
+        <div class="contact-info">
+          <span>vwharbney@gmail.com</span>
+          <span>LinkedIn</span>
+          <span>+27 691424153</span>
+          <span>Gauteng JHB</span>
+          <span>GitHub</span>
+        </div>
+
+        <section class="about-me">
+          <h2 class="section-header">ABOUT ME</h2>
+          <p>
+            With an Honours degree in Computer Science from the State University of Nizhni Novgorod and a burgeoning career 
+            as a Software Engineer/Software Developer Associated Data Science Practitioner at CAPACIT Innovation Campus, 
+            my journey is guided by a deep-seated passion for data and technology. My academic and professional pursuits have 
+            equipped me with robust skills in NoSQL and SQL, vital for navigating and innovating within the dynamic field of 
+            data engineering. My enthusiasm for tackling challenging problems is matched by a dedication to continuous 
+            learning, as evidenced by multiple Python and data analysis certifications.
+          </p>
+        </section>
+
+        <section class="education">
+          <h2 class="section-header">EDUCATION BACKGROUND</h2>
+          <div class="education-item">
+            <h3>Computer Science and Information Technology</h3>
+            <p>Lobachevsky State University of Nizhny Novgorod (Russia)</p>
+          </div>
+          <div class="education-item">
+            <h3>Secondary School</h3>
+            <p>Magwagwaza High School</p>
+          </div>
+        </section>
+
+        <section class="awards">
+          <h2 class="section-header">AWARDS</h2>
+          <div class="education-item">
+            <h3>Mpumalanga Department of Education International Schoolarship</h3>
+            <p>2028-2022</p>
+          </div>
+          <div class="education-item">
+            <h3>Bertelsmann Generation Tech Booster program</h3>
+            <p>2024-2025</p>
+          </div>
+        </section>
+      </div>
+      <!-- END PORTFOLIO TAB -->
+
+      <!-- SOLUTIONS TAB (NEW) -->
+      <div id="solutions" class="tab-content">
+        <section class="solutions_section">
+          <!-- Example solution card #1 -->
+          <div class="solution_card">
+            <h3>Project_name_1</h3>
+            <div class="tech_stack">
+              <span>Python</span>
+              <span>Vue.js</span>
+              <span>JavaScript</span>
+              <span>Django REST</span>
+            </div>
+            <p>My main objective is to analyze, identify and provide solutions to any given real world problem.</p>
+            <button class="preview-btn">Preview project</button>
+          </div>
+
+          <!-- Example solution card #2 -->
+          <div class="solution_card">
+            <h3>Project_name_2</h3>
+            <div class="tech_stack">
+              <span>Python</span>
+              <span>React</span>
+              <span>Node.js</span>
+            </div>
+            <p>This project focuses on building scalable microservices for data-intensive tasks.</p>
+            <button class="preview-btn">Preview project</button>
+          </div>
+
+          <!-- Example solution card #3 -->
+          <div class="solution_card">
+            <h3>Project_name_3</h3>
+            <div class="tech_stack">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>MySQL</span>
+            </div>
+            <p>An enterprise-grade solution designed to handle secure financial transactions.</p>
+            <button class="preview-btn">Preview project</button>
+          </div>
+        </section>
+      </div>
+      <!-- END SOLUTIONS TAB -->
+
+      <!-- CONTACT TAB -->
+      <div id="contact" class="tab-content">
+        <!-- Contact form/content goes here -->
+        <h2>Contact</h2>
+        <p>
+          You can reach me at <strong>vwharbney@gmail.com</strong> or connect with me on my social media channels below.
+        </p>
+      </div>
+      <!-- END CONTACT TAB -->
+
+      <!-- Footer Redesign -->
+      <footer>
+        <p>Let's Build the Future Together</p>
+        <div class="social-links">
+          <a href="#github" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+            <span class="sr-only">GitHub</span>
+          </a>
+          <a href="#linkedin-url">
+            <span>LinkedIn</span>
+          </a>
+          <a href="#twitter-url">
+            <span>Twitter</span>
+          </a>
+          <a href="#blog-url">
+            <span>Blog</span>
+          </a>
+        </div>
+        <p>&copy; 2023 Vernard Ngomane | Ethical Innovation</p>
+      </footer>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- Chat Icon -->
+    <div class="chat-icon">
+      <a href="#contact">
+        <img loading="lazy"
+             src="https://cdn-icons-png.flaticon.com/512/10063/10063451.png"
+             alt="Contact support via chat"
+             width="60"
+             height="60">
+      </a>
+    </div>
+  </div>
+  <div id="chatbot-container" class="chatbot-wrapper">
+    <div class="chat-header">
+      <h3>Portfolio Assistant</h3>
+      <button id="close-chat" class="chat-close-btn">×</button>
+    </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask about my portfolio...">
+      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- Tab Navigation Script -->
+  
+    <!-- At end of index.html body -->
+<script src="js/main.js" defer></script>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>
