@@ -15,70 +15,115 @@ const portfolioFAQ = {
   });
   
   // Chat Logic
-  document.getElementById('send-btn').addEventListener('click', processMessage);
-  document.getElementById('user-input').addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') processMessage();
-  });
+  async function processMessage() {
+    const input = document.getElementById('user-input').value.trim();
+    if (!input) return;
   
-  function processMessage() {
-  const input = document.getElementById('user-input').value.toLowerCase();
-  const messages = document.getElementById('chat-messages');
-  
-  // Add user message
-  messages.innerHTML += `<div class="user-msg">${input}</div>`;
-  
-  // Bot response
-  let response = "I'm sorry, I can answer questions about: skills, experience, projects, education.";
-  Object.keys(portfolioFAQ).forEach(key => {
-    if(input.includes(key)) response = portfolioFAQ[key];
-  });
-  
-  // Add bot response
-  messages.innerHTML += `<div class="bot-msg">${response}</div>`;
-  
-  // Clear input
-  document.getElementById('user-input').value = '';
-  messages.scrollTop = messages.scrollHeight;
-  }
-
-async function processMessage() {
-  const input = document.getElementById('user-input').value.trim();
-  if (!input) return;
-
-  const messages = document.getElementById('chat-messages');
-  
-  // Add user message
-  messages.innerHTML += `<div class="user-msg">${input}</div>`;
-  
-  // Check local FAQ first
-  let response = portfolioFAQ[Object.keys(portfolioFAQ).find(key => input.toLowerCase().includes(key))];
-  
-  // If no local answer, query OpenAI
-  if (!response) {
-    messages.innerHTML += `<div class="typing-indicator">...</div>`;
+    const messages = document.getElementById('chat-messages');
     
+    // Clear input immediately
+    document.getElementById('user-input').value = '';
+    
+    // Add user message safely
+    messages.innerHTML += `<div class="user-msg">${input}</div>`;
+  
     try {
-      const aiResponse = await fetch(OPENAI_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: input,
-          context: "I'm a portfolio assistant. The user is Vernard Ngomane, a Computer Science graduate with expertise in AI/ML and Full Stack Development. Limit responses to 2-3 sentences."
-        })
-      });
-
-      if (!aiResponse.ok) throw new Error('API error');
-      const data = await aiResponse.json();
-      response = data.answer || "I couldn't find an answer to that question.";
+      // Check local FAQ first
+      let response = Object.entries(portfolioFAQ).find(([key]) => 
+        input.toLowerCase().includes(key)
+      )?.[1];
+  
+      if (!response) {
+        // Show typing indicator
+        messages.innerHTML += `<div class="typing-indicator">...</div>`;
+        
+        // API call with error handling
+        const aiResponse = await fetch('http://localhost:3000/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            question: input,
+            context: "Vernard Ngomane's Portfolio Assistant - Computer Science graduate with AI/ML expertise"
+          }),
+          mode: 'cors'
+        });
+  
+        if (!aiResponse.ok) throw new Error(`HTTP ${aiResponse.status}`);
+        const data = await aiResponse.json();
+        response = data.answer;
+      }
+  
+      messages.innerHTML += `<div class="bot-msg">${response}</div>`;
     } catch (error) {
-      response = "Sorry, I'm having trouble connecting to the knowledge base.";
+      console.error('Client Error:', error);
+      messages.innerHTML += `<div class="bot-msg error">Service temporarily unavailable</div>`;
+    } finally {
+      // Remove typing indicator
+      const typing = document.querySelector('.typing-indicator');
+      if (typing) typing.remove();
+      
+      // Scroll to bottom
+      messages.scrollTop = messages.scrollHeight;
     }
-    
-    document.querySelector('.typing-indicator').remove();
   }
+  document.getElementById('send-btn').addEventListener('click', processMessage);
+  document.getElementById("user-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevents line break in textarea
+      processMessage();
+    }
+  });
+  
+  
 
-  // Add response
-  messages.innerHTML += `<div class="bot-msg">${response}</div>`;
-  messages.scrollTop = messages.scrollHeight;
-  document.getElementById('user-input').value = '';
-}
+// Fix duplicate function and CORS handling
+// async function processMessage() {
+//   const input = document.getElementById('user-input').value.trim();
+//   if (!input) return;
+
+//   const messages = document.getElementById('chat-messages');
+  
+//   // Clear input immediately
+//   document.getElementById('user-input').value = '';
+  
+//   // Add user message safely
+//   messages.innerHTML += `<div class="user-msg">${input}</div>`;
+
+//   try {
+//     // Check local FAQ first
+//     let response = Object.entries(portfolioFAQ).find(([key]) => 
+//       input.toLowerCase().includes(key)
+//     )?.[1];
+
+//     if (!response) {
+//       // Show typing indicator
+//       messages.innerHTML += `<div class="typing-indicator">...</div>`;
+      
+//       // API call with error handling
+//       const aiResponse = await fetch('http://localhost:3000/ask', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({
+//           question: input,
+//           context: "Vernard Ngomane's Portfolio Assistant - Computer Science graduate with AI/ML expertise"
+//         })
+//       });
+
+//       if (!aiResponse.ok) throw new Error(`HTTP ${aiResponse.status}`);
+//       const data = await aiResponse.json();
+//       response = data.answer;
+//     }
+
+//     messages.innerHTML += `<div class="bot-msg">${response}</div>`;
+//   } catch (error) {
+//     console.error('Client Error:', error);
+//     messages.innerHTML += `<div class="bot-msg error">Service temporarily unavailable</div>`;
+//   } finally {
+//     // Remove typing indicator
+//     const typing = document.querySelector('.typing-indicator');
+//     if (typing) typing.remove();
+    
+//     // Scroll to bottom
+//     messages.scrollTop = messages.scrollHeight;
+//   }
+// }

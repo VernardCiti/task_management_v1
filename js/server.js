@@ -1,65 +1,46 @@
-// // server.js
-// import express from 'express';
-// import OpenAI from 'openai';
-
-// const app = express();
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_KEY
-// });
-
-// app.post('/ask', async (req, res) => {
-//   try {
-//     const completion = await openai.chat.completions.create({
-//       model: "gpt-3.5-turbo",
-//       messages: [{
-//         role: "system",
-//         content: req.body.context + " Respond in Markdown format."
-//       }, {
-//         role: "user",
-//         content: req.body.question
-//       }],
-//       temperature: 0.7,
-//       max_tokens: 150
-//     });
-
-//     res.json({ answer: completion.choices[0].message.content });
-//   } catch (error) {
-//     res.status(500).json({ error: "AI service unavailable" });
-//   }
-// });
+import dotenv from 'dotenv';
+dotenv.config();
+import OpenAI from 'openai';
 import express from 'express';
-import path from 'path';
+import cors from 'cors';
+import 'dotenv/config';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Middleware for JSON bodies
-// app.use(express.json());
-// Enable CORS if needed
-// app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+// Enhanced CORS configuration
+app.use(cors({
+  // origin: process.env.CORS_ORIGINS?.split(',') || '*',
+  origin:"*",
+  methods: ['GET','POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_KEY
-// });
+// Essential middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+// Preflight handler
+app.options('/ask', cors());
+
+// OpenAI Client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+// Endpoint with error handling
 app.post('/ask', async (req, res) => {
   try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{
-        role: "system",
-        content: req.body.context + " Respond in Markdown format."
-      }, {
-        role: "user",
-        content: req.body.question
-      }],
-      temperature: 0.7,
-      max_tokens: 150
-    });
+    if (!req.body.question) {
+      return res.status(400).json({ error: "Missing question" });
+    }
 
-    res.json({ answer: completion.choices[0].message.content });
+    res.json({ answer: "Hello! This is a test response." });
   } catch (error) {
-    res.status(500).json({ error: "AI service unavailable" });
+    console.error('Server Error:', error);
+    res.status(500).json({ error: "AI service unavailable", details: error.message });
   }
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
