@@ -488,6 +488,10 @@ footer {
     /* Portfolio Section Styles */
     .portfolio-section {
       padding: var(--space-lg);
+      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
+      backdrop-filter: blur(5px); /* Subtle blur effect */
+      border-radius: 10px;
+      box-shadow: var(--shadow-sm);
     }
 
     .section-header {
@@ -518,7 +522,7 @@ footer {
       gap: 1rem;
     }
     .solution_card {
-      background: #fff;
+      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
       border-radius: 8px;
       padding: 1rem;
       box-shadow: var(--shadow-sm);
@@ -554,26 +558,33 @@ footer {
     }
 
     /* Chatbot Styles */
-  .chatbot-wrapper {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 350px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    z-index: 1001;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.3s ease;
-    display: none;
-  }
+  /* Replace .chatbot-wrapper styles with: */
+#chatbot-container {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  display: none;
+}
 
-  .chatbot-wrapper.active {
+#chatbot-container.active {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+
+  /* .chatbot-wrapper.active {
     transform: translateY(0);
     opacity: 1;
     display: block;
-  }
+  } */
 
   .chat-header {
     background: var(--color-primary);
@@ -632,39 +643,63 @@ footer {
     66% { content: '.  '; }
   }
 
-  /* Contact Form */
+  /* Contact Section */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-}
-
-.contact-form label {
-  margin: 0.5rem 0 0.25rem;
-  font-weight: 600;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  /* background: rgba(255, 255, 255, 0.9); */
+  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: var(--space-sm);
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
 }
 
 .contact-form button {
-  align-self: flex-start;
-  padding: 0.6rem 1.2rem;
-  background-color: #0077b5;
-  color: #fff;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #9030ff, #6e40ff);
+  color: white;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(144, 48, 255, 0.3);
+  transition: all 0.3s ease;
 }
+
 .contact-form button:hover {
-  background-color: #005b87;
+  background: #6e40ff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(144, 48, 255, 0.4);
 }
+
+.contact-form button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 
 
     /* Responsive adjustments */
