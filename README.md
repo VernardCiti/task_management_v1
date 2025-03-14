@@ -1,6 +1,3 @@
-Here's a README file for your portfolio project:  
-
-```markdown
 # Portfolio Website - Vernard Sharbney Ngomane
 
 ## 📌 Overview  
@@ -75,9 +72,3 @@ This is a personal portfolio website showcasing my skills, projects, and experie
 ## 📧 Contact  
 Reach out via [Email](mailto:vvsharbney@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/).
 
----
-
-📌 **Live Demo:** _[Add your deployed link here]_  
-```
-
-Would you like any additional sections or modifications? 😊
