@@ -60,15 +60,7 @@ This is a personal portfolio website showcasing my skills, projects, and experie
    - Push your project to GitHub  
    - Enable GitHub Pages under repository settings  
 
-2. **Netlify/Vercel**:  
-   - Drag & drop project folder to Netlify  
-   - Use `vercel deploy` for Vercel  
-
-### **Full-Stack Deployment (Chatbot Included)**  
-- Use **Render.com** or **Railway.app** for backend hosting  
-- Deploy frontend separately on GitHub Pages, Netlify, or Vercel  
-- Update frontend to point to backend API URL  
-
+Website :https://vernardciti.github.io/
 ## 📧 Contact  
 Reach out via [Email](mailto:vvsharbney@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/).
 
