@@ -486,35 +486,7 @@ footer {
     }
 
     /* Portfolio Section Styles */
-    .portfolio-section {
-      padding: var(--space-lg);
-      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
-      backdrop-filter: blur(5px); /* Subtle blur effect */
-      border-radius: 10px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .section-header {
-      margin-bottom: var(--space-lg);
-      border-bottom: 2px solid var(--color-primary);
-      padding-bottom: var(--space-sm);
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-
-    .education-item {
-      background: white;
-      padding: var(--space-md);
-      border-radius: 8px;
-      margin-bottom: var(--space-md);
-      box-shadow: var(--shadow-sm);
-    }
-
+   
     /* === SOLUTIONS STYLING (OPTIONAL) === */
     .solutions_section {
       display: flex;
@@ -742,3 +714,217 @@ footer {
       }
     }
   
+
+
+    
+    /* Resume Section */
+.portfolio-section {
+  
+  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed center center/cover; /* Replace with actual URL */
+  background-color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  padding: var(--space-xl);
+  margin: var(--space-lg) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.section-header h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: 10px;
+}
+
+.contact-info a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: var(--space-xs);
+  transition: all var(--transition-fast);
+}
+
+.contact-info a:hover {
+  background: rgba(144, 48, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.about-me {
+  margin-bottom: var(--space-xl);
+  padding: var(--space-md);
+  border-left: 4px solid var(--color-data);
+  background: var(--color-surface);
+  border-radius: 8px;
+}
+
+.about-me p {
+  line-height: 1.8;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+/* Education Timeline */
+.education-timeline {
+  position: relative;
+  padding-left: var(--space-lg);
+  margin-left: var(--space-md);
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary),
+    var(--color-data)
+  );
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.education-item:hover {
+  transform: translateX(10px);
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  border: 3px solid var(--color-bg);
+}
+
+.education-item h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.education-item p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Awards Grid */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.award-card {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: 10px;
+  border: 1px solid rgba(144, 48, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.award-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-dev);
+}
+
+.award-card h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.award-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Skills Matrix */
+.skills-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+.skill-category {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: 8px;
+}
+
+.skill-category h4 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.skill-list {
+  list-style: none;
+}
+
+.skill-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-progress {
+  width: 60px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  position: relative;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--color-primary);
+  width: attr(data-progress);
+}
