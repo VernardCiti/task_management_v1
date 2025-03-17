@@ -54,7 +54,7 @@ This is a personal portfolio website showcasing my skills, projects, and experie
 
 5. Open `index.html` in your browser (or use Live Server in VS Code).
 
-## 🌍 Deployment  
+## 🌍 Deployment link: https://vernardciti.github.io/  
 ### **Frontend Only Deployment (Free & Simple)**  
 1. **GitHub Pages**:  
    - Push your project to GitHub  
