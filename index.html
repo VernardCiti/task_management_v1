@@ -3,472 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio Layout</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Add in head -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript> 
-<link rel="stylesheet" href="CSS/styles.css"><!-- Link to external CSS -->
-  <!-- <link rel="stylesheet" href="styles.css" /> -->
+  <title>Show-case-system</title>
   
+  <!-- Font Awesome (if you need icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+  
+  <!-- Your external CSS file -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <div class="container">
     
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="profile">
-        <!-- Replace with your actual profile image path -->
+      <div class="brand">
         <img 
-          src="https://images.unsplash.com/photo-1618042164219-62c820f10723?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8fDA%3D"
-          class="profile-pic"
-          alt="Vernard Ngomane's profile picture"
-          loading="lazy"
-          decoding="async"
-          width="100"
-          height="100">
-        <h1 class="name">Vernard Sharbney Ngomane</h1>
+          src="https://media.istockphoto.com/id/1937434655/vector/digital-technology-gear-icon-from-blue-icon-set.jpg?s=612x612&w=0&k=20&c=YW4ux7zbfMi3c8pGiytuaEVeDqyDQbjG1wy_0bYhGH8="
+          alt="Show.CO Logo"
+        >
+        <h2>Show.CO</h2>
       </div>
-      <hr>
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav">
         <ul>
           <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#portfolio">Resume</a></li>
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <ul>
+          <li><a href="#" class="dashboard">Dashboard</a></li>
         </ul>
       </nav>
     </aside>
-    <!-- End Sidebar -->
+    <!-- END SIDEBAR -->
 
-    <!-- Main Content -->
-    <main class="content">
-      
-      <!-- HOME TAB -->
-      <div id="home" class="tab-content">
-        <header>
-          <!-- Header Section -->
-          <div class="header">
-            <!-- Title Grouping -->
-            <div class="title-group">
-              <div class="role-pill-group">
-                <span class="role-pill ai">AI Engineer</span>
-                <span class="role-pill data">Data Scientist</span>
-                <span class="role-pill data">Data Analyst</span>
-                <span class="role-pill dev">Full-Stack Dev</span>
-              </div>
-              <h1 class="main-title">
-                Turning Chaos<br> 
-                <span class="gradient-text">Into Clarity</span>
-              </h1>
-            </div>
-          
-            <!-- Objective Statement -->
-            <div class="objective-stack">
-              <p class="objective">
-                <span class="highlight">I don't fix problems</span> — 
-                <span class="action-sequence">
-                  <span class="action">decode</span> •
-                  <span class="action">dismantle</span> •
-                  <span class="action">redesign</span>
-                </span>
-              </p>
-              <p class="core-mission">
-                <strong>Mission:</strong> Architect <span class="ai-mention">AI-driven solutions</span> that 
-                transform raw complexity into actionable systems.
-              </p>
-            </div>
-          
-            <!-- CTA Button -->
-            <!-- UPDATED: Button now points to #solutions -->
-            <div class="button-container">
-              <a href="#solutions" class="button">
-                Explore Portfolio Solutions
-                <span class="arrow">→</span>
-              </a>
-            </div>
-          </div>
-          <!-- End Header Section -->
-        </header>
-
-        <div>
-          <section class="vision" aria-label="vision_section">
-            <h2>Vision</h2>
-            <p>
-              <strong>Reimagining problem-solving through AI-first principles:</strong><br>
-              I architect solutions that blend cutting-edge technology with human-centric design. My focus spans three pillars:
-            </p>
-            <ul class="vision-list">
-              <li>🔍 <strong>Precision Analysis:</strong> Leveraging ML to uncover hidden patterns</li>
-              <li>🤖 <strong>Intelligent Automation:</strong> Building self-optimizing systems</li>
-              <li>🚀 <strong>Scalable Impact:</strong> Designing architectures that grow with your needs</li>
-            </ul>
-          </section>
-      
-          <!-- Technologies Section Redesign -->
-          <section class="technologies" aria-label="technologies_section">
-            <div class="tech-category">
-              <h3>Full Stack</h3>
-              <div class="tech-list">
-                <span class="tech-item">Java Object Oriented (OOP)</span>
-                <span class="tech-item">JavaScript |HTML|CSS</span>
-                <span class="tech-item">JQuery</span>
-                <span class="tech-item">Vue.js</span>
-                <span class="tech-item">React/Next.js</span>
-                <span class="tech-item">Node.js</span>
-                <span class="tech-item">Python</span>
-                <span class="tech-item">Django REST framework</span>
-                <span class="tech-item">Springboot framework</span>
-                <span class="tech-item">NoSQL and SQL</span>
-                <span class="tech-item">RESTful APIs</span>
-                <span class="tech-item">Data Visualization</span>
-                <span class="tech-item">Data Analysis</span>
-              </div>
-            </div>
-
-            <div class="tech-category">
-              <h3>AI/ML Stack</h3>
-              <div class="tech-list">
-                <span class="tech-item">Deep Learning</span>
-                <span class="tech-item">Generative AI</span>
-                <span class="tech-item">Machine Learning</span>
-                <span class="tech-item">TensorFlow</span>
-                <span class="tech-item">PyTorch</span>
-                <span class="tech-item">OpenCV</span>
-                <span class="tech-item">HuggingFace</span>
-              </div>
-            </div>
-
-            <div class="tech-category">
-              <h3>Cloud & DevOps</h3>
-              <div class="tech-list">
-                <span class="tech-item">AWS/GCP</span>
-                <span class="tech-item">Kubernetes</span>
-                <span class="tech-item">Docker</span>
-                <span class="tech-item">CI/CD</span>
-              </div>
-            </div>
-          </section>
-          <!-- Certifications Section -->
-<section class="certifications">
-  <h2>Certifications</h2>
-  <div class="certifications-grid">
-    <!-- Certification Item Template -->
-    <div class="certification-item">
-      <img 
-        src="https://images.credly.com/size/340x340/images/19df5d04-16a5-4c4f-8ea1-1ed5512013f4/blob" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>Deep Learning</h3>
-        <p>Issued by IBM</p>
-        <span class="cert-date">Issued Jan 2025</span>
-      </div>
-    </div>
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/11038633" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>Applied Data Analysis</h3>
-        <p>Skillsoft</p>
-        <span class="cert-date">Issued 17 September 2024</span>
-      </div>
-    </div>
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/11038634" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>Data Analysist</h3>
-        <p>Skillsoft
-        </p>
-        <span class="cert-date">Issued September 2024</span>
-      </div>
-    </div>
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/11038506" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>Data Lake Sources, Visualizations, & ETL Operations</h3>
-        <p>Skillsoft
-        </p>
-        <span class="cert-date">Issued September 2024</span>
-      </div>
-    </div>
-   
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/10922793" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>
-          Inferential Statistics</h3>
-        <p>Skillsoft
-        </p>
-        <span class="cert-date">Issued September 2024</span>
-      </div>
-    </div>
-    
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/10846801" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>Python - Manipulating & Analyzing Data in Pandas DataFrames</h3>
-        <p>Skillsoft
-        </p>
-        <span class="cert-date">Issued September 2024</span>
-      </div>
-    </div>
-    
-    <div class="certification-item">
-      <img 
-        src="https://eu.api.accredible.com/v1/frontend/credential_website_embed_image/badge/10779567" 
-        alt="AWS Certified Solutions Architect" 
-        class="certification-img"
-      >
-      <div class="certification-info">
-        <h3>
-          Python - Introduction to NumPy for Multi-dimensional Data</h3>
-        <p>Skillsoft
-        </p>
-        <span class="cert-date">Issued September 2024</span>
-      </div>
-    </div>
-    
-    
-    <!-- Repeat for other certs with unique data -->
-  </div>
-</section>
-          
-        </div>
-      </div>
-      <!-- END HOME TAB -->
-       <!-- PORTFOLIO TAB -->
-<div id="portfolio" class="tab-content portfolio-section">
-  <div class="section-header">
-    <h1>Vernard Sharbney Ngomane</h1>
-    <p>Honours in Computer Science & Information Technology</p>
-  </div>
-
-  <div class="contact-info">
-    <a href="mailto:vvharbney@gmail.com" aria-label="Email">
-      <i class="fas fa-envelope"></i>
-      <span>Email</span>
-    </a>
-    <a href="https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/" target="_blank" aria-label="LinkedIn" rel="noopener">
-      <i class="fab fa-linkedin"></i>
-      <span>LinkedIn</span>
-    </a>
-    <a href="tel:+27691424153" aria-label="Phone">
-      <i class="fas fa-phone"></i>
-      <span>+27 69 142 4153</span>
-    </a>
-    <div class="location" aria-label="Location">
-      <i class="fas fa-map-marker-alt"></i>
-      <span>Gauteng, JHB</span>
-    </div>
-    <a href="https://github.com/VernardCiti?tab=repositories" target="_blank" aria-label="GitHub" rel="noopener">
-      <i class="fab fa-github"></i>
-      <span>GitHub</span>
-    </a>
-  </div>
-
-  <section class="about-me">
-    <h2 class="section-header">Professional Profile</h2>
-    <p class="profile-summary">
-      <strong>Full-Stack Data Engineer</strong> with expertise in AI-driven solution architecture...
-    </p>
-    <div class="skills-matrix">
-      <div class="skill-category">
-        <h4>Technical Excellence</h4>
-        <ul class="skill-list">
-          <li>Data Scientist <div class="skill-progress" data-progress="90%"><div class="progress-bar"></div></div></li>
-          <li>Data Analyst <div class="skill-progress" data-progress="90%"><div class="progress-bar"></div></div></li>
-          <li>Databases (PostgreSQL) <div class="skill-progress" data-progress="90%"><div class="progress-bar"></div></div></li>
-          <li>Data Engineering <div class="skill-progress" data-progress="90%"><div class="progress-bar"></div></div></li>
-          <li>Cloud Architecture <div class="skill-progress" data-progress="85%"><div class="progress-bar"></div></div></li>
-          <li>Machine Learning <div class="skill-progress" data-progress="88%"><div class="progress-bar"></div></div></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="education">
-    <h2 class="section-header">Academic Journey</h2>
-    <div class="education-timeline">
-      <div class="education-item">
-        <div class="education-header">
-          <h3>BSc Computer Science & IT</h3>
-          <span class="date">2018-2022</span>
-        </div>
-        <p class="institution">Lobachevsky State University</p>
-        <ul class="achievements">
-          <li>Specialized in Distributed Systems</li>
-          <li>Graduated with Honors</li>
-        </ul>
-      </div>
-      <div class="education-item">
-        <div class="education-header">
-          <h3>Math & Sciences</h3>
-          <span class="date">2013-2017</span>
-        </div>
-        <p class="institution">Magwagwaza High School</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="awards">
-    <h2 class="section-header">Recognitions</h2>
-    <div class="awards-grid">
-      <article class="award-card">
-        <h3>Bertelsmann Tech Scholar</h3>
-        <time>2024-2025</time>
-        <p>Selected among top 1% applicants for advanced AI training</p>
-      </article>
-      <article class="award-card">
-        <h3>MpDoE International Scholar</h3>
-        <time>2018-2022</time>
-        <p>Selected among top 1% matric for top performance in Maths and Science</p>
-      </article>
-    </div>
-  </section>
-</div>
-<!-- END PORTFOLIO TAB -->
-
-      <!-- SOLUTIONS TAB (NEW) -->
-      <div id="solutions" class="tab-content">
-        <section class="solutions_section">
-          <!-- Example solution card #1 -->
-          <div class="solution_card">
-            <h3>Project_name_1</h3>
-            <div class="tech_stack">
-              <span>Python</span>
-              <span>Vue.js</span>
-              <span>JavaScript</span>
-              <span>Django REST</span>
-            </div>
-            <p>My main objective is to analyze, identify and provide solutions to any given real world problem.</p>
-            <button class="preview-btn">Preview project</button>
-          </div>
-
-          <!-- Example solution card #2 -->
-          <div class="solution_card">
-            <h3>Project_name_2</h3>
-            <div class="tech_stack">
-              <span>Python</span>
-              <span>React</span>
-              <span>Node.js</span>
-            </div>
-            <p>This project focuses on building scalable microservices for data-intensive tasks.</p>
-            <button class="preview-btn">Preview project</button>
-          </div>
-
-          <!-- Example solution card #3 -->
-          <div class="solution_card">
-            <h3>Project_name_3</h3>
-            <div class="tech_stack">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>MySQL</span>
-            </div>
-            <p>An enterprise-grade solution designed to handle secure financial transactions.</p>
-            <button class="preview-btn">Preview project</button>
-          </div>
-        </section>
-      </div>
-      <!-- END SOLUTIONS TAB -->
-
-      <!-- CONTACT TAB -->
-      <div id="contact" class="tab-content">
-        
-        <!-- Contact Form -->
-        <form class="contact-form" target="_blank" action="https://formspree.io/f/mwplkgzz" method="POST">
-          <!-- Contact form/content goes here -->
-        <h2>Contact</h2>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- TOP HEADER AREA -->
+      <div class="header">
         <p>
-          You can reach me at <a href="mailto:vvsharbney@gmail.com">
-            <email>vvsharbney@gmail.com</email>
-          </a> or connect with me on my social media channels below.
-        </p>
-      
-          <label for="name">Name:</label>
-          <input type="text" id="name" placeholder="Your name" required />
-      
-          <label for="email">Email:</label>
-          <input type="email" id="email" placeholder="Your email" required />
-      
-          <label for="enquiry">Your enquiry:</label>
-          <textarea id="enquiry" name="enquiry" rows="6" placeholder="How can I help you?" required></textarea>
-      
-          <button type="submit">Send</button>
-        </form>
-      </div>
-      <!-- END CONTACT TAB -->
-
-      <!-- Footer Redesign -->
-      <footer>
-        <p>Let's Build the Future Together</p>
-        <div class="social-links">
-          <a href="https://github.com/VernardCiti?tab=repositories" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-            <span class="sr-only">GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/" target="_blank">
-            <span>LinkedIn</span>
-          </a>
-          <a href="mailto:vvsharbney@gmail.com">
-            <email>Email</email>
-          </a>
-          <a href="#blog-url">
-            <span>Blog</span>
-          </a>
+          <strong>This is To-to-list page management where you create to-do lists of different categories.
+          <br>Add specifications such as time/place through calendar and alerts of to-do list about to expire.
+        </p></strong>
+        <div class="header-buttons">
+          <div>
+            <button>Add task</button>
+          </div>
+          <div>
+            <button>Add category</button>
+          </div>
         </div>
-        <p>&copy; 2023 Vernard Ngomane | Ethical Innovation</p>
+      </div>
+      
+
+      <!-- MIDDLE SECTION: TASKS & CALENDAR -->
+      <section class="tasks-row">
+        
+        <!-- LEFT: TASKS WRAPPER -->
+        <div class="tasks-wrapper">
+          <!-- Example Task Card (Detailed) -->
+          <div class="task-card">
+            <h3 class="task-title">Task_Name</h3>
+            <p class="task-desc">This is the description for the task</p>
+            <div class="task-footer">
+              <!-- Left: Completed Button -->
+              <button class="task-complete">Completed</button>
+              <!-- Right: Action Icons -->
+              <div class="task-actions">
+                <!-- Share -->
+                <button class="action-btn" aria-label="Share">
+                  <i class="fas fa-share"></i>
+                </button>
+                <!-- Favorite/Star -->
+                <button class="action-btn" aria-label="Favorite">
+                  <i class="fas fa-star"></i>
+                </button>
+                <!-- Edit -->
+                <button class="action-btn" aria-label="Edit">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <!-- Delete -->
+                <button class="action-btn" aria-label="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+                <!-- Archive -->
+                <button class="action-btn" aria-label="Archive">
+                  <i class="fas fa-archive"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Task Cards (simpler placeholders) -->
+          <div class="task-card">
+            <h3 class="task-title">Task_Name</h3>
+            <p class="task-desc">Another task description...</p>
+            <div class="task-footer">
+              <button class="task-complete">Completed</button>
+              <div class="task-actions">
+                <button class="action-btn" aria-label="Share"><i class="fas fa-share"></i></button>
+                <button class="action-btn" aria-label="Favorite"><i class="fas fa-star"></i></button>
+                <button class="action-btn" aria-label="Edit"><i class="fas fa-edit"></i></button>
+                <button class="action-btn" aria-label="Delete"><i class="fas fa-trash-alt"></i></button>
+                <button class="action-btn" aria-label="Archive"><i class="fas fa-archive"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task_Name</h3>
+            <p class="task-desc">Yet another description...</p>
+            <div class="task-footer">
+              <button class="task-complete">Completed</button>
+              <div class="task-actions">
+                <button class="action-btn" aria-label="Share"><i class="fas fa-share"></i></button>
+                <button class="action-btn" aria-label="Favorite"><i class="fas fa-star"></i></button>
+                <button class="action-btn" aria-label="Edit"><i class="fas fa-edit"></i></button>
+                <button class="action-btn" aria-label="Delete"><i class="fas fa-trash-alt"></i></button>
+                <button class="action-btn" aria-label="Archive"><i class="fas fa-archive"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add New Task Box -->
+          <div class="add-task">Add new task</div>
+        </div>
+
+        <!-- RIGHT: CALENDAR & TASK CATEGORIES -->
+        <div class="right-panel">
+          <!-- Calendar Box -->
+          <div class="calendar-box">
+            <header>
+              <h3>February 2023</h3>
+              <!-- Example icon -->
+              <i class="fas fa-cog"></i>
+            </header>
+            <div class="calendar-body">
+              <!-- Insert your calendar UI here -->
+            </div>
+          </div>
+          <!-- Task Categories -->
+          <div class="task-categories">
+            <p>Today's task</p>
+            <p>Important task</p>
+            <p>Completed tasks</p>
+          </div>
+        </div>
+
+      </section>
+      <!-- END MIDDLE SECTION -->
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-content">
+          <p>© 2024 Show.CO Task Management System</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+        </div>
       </footer>
+      <!-- END FOOTER -->
+
     </main>
-    <!-- End Main Content -->
-
-    <!-- Chat Icon -->
-    <div class="chat-icon">
-      <img loading="lazy"
-           src="https://cdn-icons-png.flaticon.com/512/10063/10063451.png"
-           alt="Chat icon"
-           width="60"
-           height="60">
-    </div>
+    <!-- END MAIN CONTENT -->
+    
   </div>
-  <div id="chatbot-container" class="chatbot-wrapper">
-    <div class="chat-header">
-      <h3>Portfolio Assistant</h3>
-      <button id="close-chat" class="chat-close-btn">×</button>
-    </div>
-    <div id="chat-messages" class="chat-messages"></div>
-    <div class="chat-input">
-      <input type="text" id="user-input" placeholder="Ask about my portfolio...">
-      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
+  <!-- END CONTAINER -->
 
-  <!-- Tab Navigation Script -->
-  
-    <!-- At end of index.html body -->
-<script src="js/main.js" defer></script>
-<script src="js/chatbot.js" defer></script>
 </body>
 </html>
