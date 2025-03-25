@@ -1,4 +1,4 @@
-# Portfolio Website - Vernard Sharbney Ngomane
+# Portfolio Website - Vernard Sharbney Ngomane Link: https://vernardciti.github.io/ 
 
 ## 📌 Overview  
 This is a personal portfolio website showcasing my skills, projects, and experience. It also includes an AI-powered chatbot to provide instant responses to frequently asked questions.
@@ -17,8 +17,8 @@ This is a personal portfolio website showcasing my skills, projects, and experie
 - **Database:** (Optional) Add MongoDB or Firebase for persistence  
 - **Hosting:** Free options like GitHub Pages, Vercel, or Netlify  
 
-## 📂 Project Structure  
-```
+📂 Project Structure  
+
 /portfolio-website
 │── public/
 │── src/
@@ -28,9 +28,8 @@ This is a personal portfolio website showcasing my skills, projects, and experie
 │── server.js       # Express.js backend for chatbot API
 │── index.html      # Main HTML file
 │── README.md       # Documentation
-```
 
-## ⚡ Setup & Installation  
+⚡ Setup & Installation  
 1. Clone the repository:  
    ```sh
    git clone https://github.com/yourusername/portfolio-website.git
@@ -54,13 +53,12 @@ This is a personal portfolio website showcasing my skills, projects, and experie
 
 5. Open `index.html` in your browser (or use Live Server in VS Code).
 
-## 🌍 Deployment link: https://vernardciti.github.io/  
-### **Frontend Only Deployment (Free & Simple)**  
-1. **GitHub Pages**:  
+🌍 Deployment link: https://vernardciti.github.io/  
+Frontend Only Deployment (Free & Simple)**  
+1. GitHub Pages:  
    - Push your project to GitHub  
    - Enable GitHub Pages under repository settings  
 
-Website :https://vernardciti.github.io/
-## 📧 Contact  
+ 📧 Contact  
 Reach out via [Email](mailto:vvsharbney@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/).
 

@@ -1,1021 +1,220 @@
-
-    /* Reset and basic styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background:url('https://media.gettyimages.com/id/1490266134/video/complex-digital-structure-growing-endlessly-intricate-connection-lines-symbolizing-innovative.jpg?s=640x640&k=20&c=O6QOXjGGMJhwqRHXMHKcxpZM0uGrTlAlASG0AH9_Sh4=') no-repeat center center / cover;
-      
-      color: #333;
-    }
-    :root {
-      --color-bg: #ffffff;
-      --color-surface: #f8f9fa;
-      --color-error: #dc3545;
-      --color-primary: #9030ff;
-      --color-ai: #9030ff;
-      --color-data: #196dff;
-      --color-dev: #ff9800;
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 1.5rem;
-      --space-lg: 2rem;
-      --space-xl: 3rem;
-      --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Container for sidebar + main content */
-    .container {
-      display: grid;
-      grid-template-columns: 250px 1fr; /* Sidebar width = 250px, remaining space for main content */
-      min-height: 100vh; /* Full viewport height */
-      padding: 0;
-    }
-
-    .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+/* RESET & BASE STYLES */
+* {
+  margin: 0;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f8f9fa;
+  color: #2d3436;
 }
 
-.sidebar,
-.header,
-.content,
-footer {
-  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed;
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.sidebar,
-.header,
-.content,
-footer {
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-    /* Sidebar styles */
-    .sidebar {
-      background-position: left center;
-      border-left: 4px solid #9030ff;
-      transition: transform 0.3s; 
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #ddd; /* Light gray border */
-      padding: var(--space-lg);
-      margin: 10px 5px;
-    }
-
-    /* Profile section in the sidebar */
-    .profile {
-      text-align: center;
-      margin-bottom: 40px;
-      margin-bottom: var(--space-xl);
-    }
-
-    .profile-pic {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 3px solid #9030ff;
-      box-shadow: 0 4px 12px rgba(144, 48, 255, 0.15);
-    }
-
-    .name {
-      font-size: 1.4rem;
-      margin-bottom: 5px;
-    }
-
-    .title, .subtitle {
-      font-size: 1.4rem;
-      color: #444;
-      margin-bottom: 2px;
-    }
-
-    /* Navigation in the sidebar */
-    .nav ul {
-      list-style: none;
-    }
-
-    .nav ul li {
-      margin: var(--space-md) 0;
-    }
-
-    .nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 8px 12px;
-      border-radius: 6px;
-      display: block;
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-
-    /* Add focus states */
-    .nav ul li a:focus {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    .nav ul li a:hover {
-      color: #9030ff; /* Hover color */
-      background: rgba(144, 48, 255, 0.05);
-      transform: translateX(4px);
-    }
-
-    .tab-content {
-      display: none; /* Hide all by default */
-    }
-
-    .tab-content.active {
-      display: block; /* Show active content */
-    }
-
-    /* Main content area */
-    .content {
-      padding: 10px;
-      background-position: center center;
-      background: url('https://media.gettyimages.com/id/1490266134/video/complex-digital-structure-growing-endlessly-intricate-connection-lines-symbolizing-innovative.jpg?s=640x640&k=20&c=O6QOXjGGMJhwqRHXMHKcxpZM0uGrTlAlASG0AH9_Sh4=') fixed center center/cover;
-      margin: 0;
-    }
-
-    /* === HEADER REDESIGN === */
-    .header {
-      position: relative;
-
-      /* background:url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') no-repeat center center / cover; */
-      border-left: 4px solid #9030ff;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(144, 48, 255, 0.1);
-      padding: var(--space-lg);
-      margin-bottom: var(--space-xl);
-      /* background-color: rgba(144, 48, 255, 0.05); */
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    .title-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .role-pill-group {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-bottom: var(--space-md);
-    }
-
-    .role-pill {
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      font-size: 0.95rem;
-      transition: 
-        transform 0.2s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .role-pill:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .role-pill.ai {
-      background: rgba(144, 48, 255, 0.15);
-      color: #9030ff;
-      border: 1px solid rgba(144, 48, 255, 0.3);
-    }
-
-    .role-pill.data {
-      background: rgba(25, 109, 255, 0.15);
-      color: #196dff;
-      border: 1px solid rgba(25, 109, 255, 0.3);
-    }
-
-    .role-pill.dev {
-      background: rgba(255, 152, 0, 0.15);
-      color: #ff9800;
-      border: 1px solid rgba(255, 152, 0, 0.3);
-    }
-
-    .main-title {
-      font-size: 2.5rem;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      color: #1a1a1a;
-      letter-spacing: -0.03em;
-      margin-bottom: var(--space-sm);
-    }
-
-    .gradient-text {
-      background: linear-gradient(45deg, #9030ff, #196dff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block; /* Fix gradient clipping */
-    }
-
-    /* Objective Styling */
-    .objective-stack {
-      margin-bottom: var(--space-lg);
-    }
-
-    .highlight {
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    .action-sequence {
-      display: inline-block;
-      margin-left: 0.5rem;
-    }
-
-    .action {
-      position: relative;
-      margin: 0 0.8rem;
-      font-weight: 600;
-    }
-
-    .action:not(:last-child)::after {
-      content: "•";
-      position: absolute;
-      right: -1rem;
-      color: #ddd;
-      font-weight: 300;
-    }
-
-    .core-mission {
-      margin-top: var(--space-md);
-      color: #444;
-      line-height: 1.6;
-    }
-
-    .ai-mention {
-      font-weight: 600;
-      border-bottom: 2px dotted rgba(144, 48, 255, 0.3);
-    }
-
-    /* Button Enhancement */
-    .button {
-      padding: 0.8rem 1.5rem;
-      background: linear-gradient(45deg, #9030ff, #6e40ff);
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    .button-container {
-      text-align: end;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(144, 48, 255, 0.3);
-    }
-
-    .arrow {
-      font-size: 1.2em;
-      transition: transform 0.3s;
-    }
-
-    .button:hover .arrow {
-      transform: translateX(3px);
-    }
-
-    .vision {
-      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed left center/cover; /* Replace with actual URL */
-      background-color: rgba(231, 231, 231, 0.9); /* Add transparency */
-      
-      border-left: 4px solid #9030ff;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-      margin: var(--space-xl) 0;
-      padding: var(--space-lg);
-    }
-
-    .vision h2 {
-      color: #9030ff;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .vision h2::before {
-      content: '🔮';
-      font-size: 1.2em;
-    }
-
-    .vision p {
-      line-height: 1.7;
-      color: #444;
-    }
-    .vision-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: var(--space-sm);
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-
-    .vision-list li:hover {
-      background: rgba(144, 48, 255, 0.03);
-    }
-
-    /* ===== TECHNOLOGIES SECTION REDESIGN ===== */
-    .technologies {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .tech-category {
-      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed left center/cover; /* Replace with actual URL */
-      background-color: rgba(231, 231, 231, 0.9); /* Add transparency */
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-      min-height: 180px;
-      padding: var(--space-md);
-    }
-
-    .tech-category h3 {
-      color: #9030ff;
-      font-size: 1.1rem;
-      border-bottom: 2px solid #eee;
-      padding: var(--space-md);
-      margin-bottom: var(--space-sm);
-    }
-
-    .tech-category:hover {
-      transform: translateY(-4px);
-    }
-
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-    }
-
-    .tech-item {
-      background: #f4f4f4;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      transition: 
-        background 0.25s ease,
-        transform 0.2s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .tech-item:hover {
-      background: #9030ff;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 2px 6px rgba(144, 48, 255, 0.2);
-    }
-
-    /* ===== CHAT ICON REDESIGN ===== */
-    .chat-icon {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-    }
-
-    .chat-icon img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(144, 48, 255, 0.3);
-      transition: all 0.3s;
-    }
-
-    .chat-icon:hover img {
-      transform: scale(1.1) rotate(10deg);
-      filter: drop-shadow(0 6px 16px rgba(144, 48, 255, 0.2));
-    }
-
-    /* ===== FOOTER REDESIGN ===== */
-    footer {
-      background-position: bottom center;
-      /* background: linear-gradient(15deg, #f8f9fa 0%, #ffffff9a 100%); */
-      border: 1px solid rgba(144, 48, 255, 0.1);
-      margin-top: 50px;
-      padding: 30px 0;
-      text-align: center;
-      border-radius: 12px;
-      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
-    }
-
-    footer p {
-      margin-top: var(--space-sm);
-      padding: var(--space-sm) 0;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-md);
-      margin: var(--space-md) 0;
-    }
-
-    .social-links a {
-      opacity: 0.8;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #444 !important;
-    }
-
-    .social-links a::before {
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-    }
-    .social-links a:hover {
-      opacity: 1;
-      color: #9030ff;
-    }
-    .social-links a[href*="github"]::before { content: "\f09b"; }
-    .social-links a[href*="linkedin"]::before { content: "\f08c"; }
-    .social-links a[href*="twitter"]::before { content: "\f099"; }
-    .social-links a[href*="blog"]::before { content: "\f5fc"; }
-
-    /* portfolio pages */
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .nav a.active {
-      color: var(--color-primary);
-      background: rgba(144, 48, 255, 0.05);
-    }
-
-    /* Portfolio Section Styles */
-   
-    /* === SOLUTIONS STYLING (OPTIONAL) === */
-    .solutions_section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .solution_card {
-      background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .solution_card h3 {
-      margin-bottom: 0.5rem;
-    }
-    .solution_card .tech_stack {
-      margin-bottom: 0.5rem;
-    }
-    .solution_card .tech_stack span {
-      display: inline-block;
-      margin-right: 0.5rem;
-      padding: 4px 8px;
-      background: #f4f4f4;
-      border-radius: 4px;
-      font-size: 0.85rem;
-    }
-    .solution_card p {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
-    .preview-btn {
-      padding: 0.5rem 1rem;
-      background: #9030ff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .preview-btn:hover {
-      background: #6e40ff;
-    }
-
-    /* Chatbot Styles */
-  /* Replace .chatbot-wrapper styles with: */
-#chatbot-container {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  width: 350px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  z-index: 1001;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  display: none;
-}
-
-#chatbot-container.active {
-  opacity: 1;
-  transform: translateY(0);
-  display: block;
-}
-
-  /* .chatbot-wrapper.active {
-    transform: translateY(0);
-    opacity: 1;
-    display: block;
-  } */
-
-  .chat-header {
-    background: var(--color-primary);
-    color: white;
-    padding: var(--space-sm);
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .chat-close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-
-  .chat-messages {
-    height: 400px;
-    overflow-y: auto;
-    padding: var(--space-md);
-    background: var(--color-bg);
-  }
-
-  .chat-input {
-    display: flex;
-    padding: var(--space-sm);
-    border-top: 1px solid var(--color-border);
-  }
-
-  #user-input {
-    flex: 1;
-    padding: var(--space-xs);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    margin-right: var(--space-xs);
-  }
-
-  .typing-indicator {
-    display: inline-block;
-    padding: 12px;
-    background: var(--color-bg);
-    border-radius: 8px;
-  }
-  
-  .typing-indicator::after {
-    content: '...';
-    animation: typing 1s infinite;
-  }
-  
-  @keyframes typing {
-    0%, 100% { content: '...'; }
-    33% { content: '.. '; }
-    66% { content: '.  '; }
-  }
-
-  /* Contact Section */
-.contact-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding: var(--space-lg);
-  /* background: rgba(255, 255, 255, 0.9); */
-  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed bottom center/cover;
-  border-radius: 10px;
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: var(--space-sm);
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: all 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--color-primary);
-  outline: none;
-}
-
-.contact-form button {
-  padding: 1rem 2rem;
-  background: linear-gradient(45deg, #9030ff, #6e40ff);
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(144, 48, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.contact-form button:hover {
-  background: #6e40ff;
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(144, 48, 255, 0.4);
-}
-
-.contact-form button:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-
-
-    /* Responsive adjustments */
-    @media (min-width: 769px) {
-      .container {
-        grid-template-columns: 250px 1fr;
-      }
-      .chat-icon {
-        bottom: 20px;
-        right: 20px;
-      }
-      .chat-icon img {
-        width: 50px;
-        height: 50px;
-      }
-      .sidebar {
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed left center/cover; /* Replace with actual URL */
-        background-color: rgba(231, 231, 231, 0.9); /* Add transparency */
-      }
-      .main-title {
-        font-size: 2rem;
-      }
-      .action {
-        margin: 0 0.5rem;
-      }
-    }
-
-    .transition-all {
-  transition: all var(--transition-normal);
-}
-
-    @media (min-width: 480px) {
-      .action {
-        margin: 0 0.3rem;
-      }
-      .action:not(:last-child)::after {
-        right: -0.8rem;
-      }
-    }
-  
-
-
-    
-    /* Resume Section */
-.portfolio-section {
-  
-  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed center center/cover; /* Replace with actual URL */
-  background-color: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(8px);
-  border-radius: 15px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-  padding: var(--space-xl);
-  margin: var(--space-lg) 0;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  position: relative;
-}
-
-.section-header h1 {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.section-header p {
-  font-size: 1.1rem;
-  color: #666;
-  letter-spacing: 0.5px;
-}
-
-.contact-info {
+/* Layout Structure */
+.container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
-  padding: var(--space-md);
-  background: var(--color-surface);
-  border-radius: 10px;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
 }
 
-.contact-info a {
+/* Sidebar */
+.sidebar {
+  background: #fff;
+  padding: 2rem;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04);
+}
+.brand {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  color: var(--color-primary);
-  text-decoration: none;
-  padding: var(--space-xs);
-  transition: all var(--transition-fast);
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
-
-.contact-info a:hover {
-  background: rgba(144, 48, 255, 0.05);
-  transform: translateX(4px);
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
-
-.about-me {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-md);
-  border-left: 4px solid var(--color-data);
-  background: var(--color-surface);
-  border-radius: 8px;
-}
-
-.about-me p {
-  line-height: 1.8;
-  color: #444;
-  font-size: 1.1rem;
-}
-
-/* Education Timeline */
-.education-timeline {
-  position: relative;
-  padding-left: var(--space-lg);
-  margin-left: var(--space-md);
-}
-
-.education-timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 3px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-primary),
-    var(--color-data)
-  );
-}
-
-.education-item {
-  position: relative;
-  margin-bottom: var(--space-xl);
-  padding: var(--space-md);
-  background: var(--color-bg);
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast);
-}
-
-.education-item:hover {
-  transform: translateX(10px);
-}
-
-.education-item::before {
-  content: '';
-  position: absolute;
-  left: -34px;
-  top: 20px;
-  width: 16px;
-  height: 16px;
-  background: var(--color-primary);
-  border-radius: 50%;
-  border: 3px solid var(--color-bg);
-}
-
-.education-item h3 {
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.education-item p {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-/* Awards Grid */
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.award-card {
-  padding: var(--space-md);
-  background: var(--color-surface);
-  border-radius: 10px;
-  border: 1px solid rgba(144, 48, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.award-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--color-dev);
-}
-
-.award-card h3 {
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.award-card p {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Skills Matrix */
-.skills-matrix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-  margin: var(--space-xl) 0;
-}
-
-.skill-category {
-  padding: var(--space-md);
-  background: var(--color-surface);
-  border-radius: 8px;
-}
-
-.skill-category h4 {
-  color: var(--color-primary);
-  margin-bottom: var(--space-md);
-}
-
-.skill-list {
+.nav ul {
   list-style: none;
+  margin: 1.5rem 0;
+}
+.nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #636e72;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav a:hover,
+.nav a.active {
+  background: #f0f2f5;
+  color: #2d3436;
 }
 
-.skill-list li {
+/* Main Content */
+main {
+  padding: 2rem;
+  background: #fff;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+.header p {
+  color: #636e72;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.header-buttons {
+  display: flex;
+  align-items: start;
+}
+.header button {
+  background: #6c5ce7;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.header button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Tasks Row */
+.tasks-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.tasks-wrapper {
+  display: grid;
+  gap: 1rem;
+}
+.task-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+.task-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.task-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.task-desc {
+  color: #636e72;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+.task-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-xs) 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.task-actions button {
+  background: none;
+  border: none;
+  color: #636e72;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+.task-actions button:hover {
+  color: #6c5ce7;
+  transform: translateY(-1px);
+}
+.add-task {
+  background: #fff;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+  color: #999;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.add-task:hover {
+  background-color: #fafafa;
 }
 
-.skill-progress {
-  width: 60px;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  position: relative;
-}
-
-.skill-progress::after {
-  content: '';
-  position: absolute;
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
   left: 0;
   top: 0;
+  width: 100%;
   height: 100%;
-  background: var(--color-primary);
-  width: attr(data-progress);
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
 }
-
-.certifications {
-  padding: 2rem 0.5rem;
-  background: url('https://img.freepik.com/free-photo/blue-toned-pack-paper-sheets-with-copy-space_23-2148320442.jpg?t=st=1741785951~exp=1741789551~hmac=872beec6773e58b2a87dd0f8dc1aeef2340364fba64a0384a3f2d6482c65947b&w=740') fixed center center/cover; /* Replace with actual URL */
-  background-color: rgba(255, 255, 255, 0.97);
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.certifications h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #6e40ff;
-  margin-bottom: 2rem;
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 4px;
   position: relative;
 }
-
-.certifications-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
-
-.certification-item {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.certification-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.certification-img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  padding: 1.5rem;
-  background: #f4f4f4;
-  border-bottom: 2px solid #eee;
-}
-
-.certification-info {
-  padding: 1.5rem;
-  flex-grow: 1;
-}
-
-.certification-info h3 {
-  font-size: 1.25rem;
-  color: #2c3e50;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-}
-
-.certification-info p {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 0.5rem;
-}
-
-.cert-date {
-  display: block;
-  font-size: 0.85rem;
-  color: #95a5a6;
-  margin-top: 1rem;
+.close:hover,
+.close:focus {
+  color: #000;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .certifications-grid {
+  .container {
     grid-template-columns: 1fr;
   }
-  
-  .certification-img {
-    height: 180px;
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    box-shadow: none;
   }
-}
-
-@media (min-width: 1024px) {
-  .certifications-grid {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  .tasks-row {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    text-align: left;
+  }
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 }
