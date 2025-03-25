@@ -1,64 +1,114 @@
-# Portfolio Website - Vernard Sharbney Ngomane Link: https://vernardciti.github.io/ 
+Below is a sample README file that explains the project, setup instructions, and usage details:
 
-## 📌 Overview  
-This is a personal portfolio website showcasing my skills, projects, and experience. It also includes an AI-powered chatbot to provide instant responses to frequently asked questions.
+---
 
-## 🚀 Features  
-- **Dynamic Tab Navigation:** Smooth transitions between different sections.  
-- **AI Chatbot:** Uses OpenAI API to answer portfolio-related queries.  
-- **Responsive Design:** Fully optimized for mobile and desktop views.  
-- **Contact Form:** Allows visitors to reach out via Formspree.  
-- **Tech Stack Display:** Highlights expertise in Full-Stack Development, AI/ML, and Cloud Computing.  
+# Show.CO Task Management System
 
-## 🛠️ Tech Stack  
-- **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Node.js, Express.js  
-- **AI/ML:** OpenAI API  
-- **Database:** (Optional) Add MongoDB or Firebase for persistence  
-- **Hosting:** Free options like GitHub Pages, Vercel, or Netlify  
+A simple, full-stack task management application that allows users to create, view, update, and delete tasks along with managing task categories and priorities. The system is built using Node.js, Express, PostgreSQL, HTML, CSS, and JavaScript.
 
-📂 Project Structure  
+## Features
 
-/portfolio-website
-│── public/
-│── src/
-│   ├── css/        # Stylesheets
-│   ├── js/         # JavaScript files
-│   ├── components/ # Reusable components
-│── server.js       # Express.js backend for chatbot API
-│── index.html      # Main HTML file
-│── README.md       # Documentation
+- **Task CRUD Operations:** Create, read, update, and delete tasks.
+- **Category Management:** Add and remove categories for task organization.
+- **Responsive UI:** Modern, responsive design with a sidebar, modals, and interactive task cards.
+- **RESTful API:** Backend built with Node.js and Express to handle all data operations.
+- **Persistent Storage:** Uses PostgreSQL to store tasks and categories.
 
-⚡ Setup & Installation  
-1. Clone the repository:  
-   ```sh
-   git clone https://github.com/yourusername/portfolio-website.git
-   cd portfolio-website
-   ```
+## Project Structure
 
-2. Install dependencies (for backend chatbot support):  
-   ```sh
-   npm install
-   ```
+```
+task_management/
+├── css/
+│   └── styles.css        # Contains all custom styles for the UI.
+├── js/
+│   └── main.js           # Contains client-side JavaScript for DOM manipulation, modals, and API calls.
+├── html/
+│   └── index.html        # The main HTML file that structures the UI.
+└── server.js             # Express server file handling API endpoints and PostgreSQL connection.
+```
 
-3. Create a `.env` file and add your OpenAI API key:  
-   ```
-   OPENAI_API_KEY=your_api_key_here
-   ```
+## Prerequisites
 
-4. Start the development server:  
-   ```sh
-   npm start
-   ```
+- **Node.js** (v14+ recommended)
+- **PostgreSQL**
+- **npm** (Node Package Manager)
 
-5. Open `index.html` in your browser (or use Live Server in VS Code).
+## Setup Instructions
 
-🌍 Deployment link: https://vernardciti.github.io/  
-Frontend Only Deployment (Free & Simple)**  
-1. GitHub Pages:  
-   - Push your project to GitHub  
-   - Enable GitHub Pages under repository settings  
+### 1. Clone the Repository
 
- 📧 Contact  
-Reach out via [Email](mailto:vvsharbney@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/vernard-sharbney-ngomane-407110249/).
+```bash
+git clone <repository-url>
+cd task_management
+```
 
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root with the following content (update with your PostgreSQL credentials):
+
+```
+PG_USER=your_db_username
+PG_HOST=localhost
+PG_DATABASE=your_db_name
+PG_PASSWORD=your_db_password
+PG_PORT=5432
+PORT=3000
+```
+
+### 4. Set Up the Database
+
+Create the necessary tables in PostgreSQL:
+
+```sql
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  task_date DATE NOT NULL,
+  description TEXT,
+  category VARCHAR(100),
+  priority VARCHAR(20),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+```
+
+### 5. Run the Server
+
+Start the Express server by running:
+
+```bash
+node server.js
+```
+
+The server will run on the port specified in your `.env` file (default is `3000`).
+
+### 6. Access the Application
+
+Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to start using the task management system.
+
+## Usage
+
+- **Add Task:**  
+  Click on the **"Add task"** button to open the task modal. Fill out the form fields including title, date, description, category, and priority, then submit the form to create a new task.
+
+- **Add Category:**  
+  Click on the **"Add category"** button to open the category modal. Enter a new category name and submit the form. The new category will be added to the task form's category dropdown.
+
+- **Manage Tasks:**  
+  Tasks are displayed as cards in the main view. Each card shows task details like title, date, category, and priority. Use the delete button (×) on each card to remove a task.
+
+## Technologies Used
+
+- **Frontend:** HTML, CSS, JavaScript, Axios (for HTTP requests)
+- **Backend:** Node.js, Express, PostgreSQL
+- **Design:** Custom CSS with modern design principles, Font Awesome for icons
