@@ -1,7 +1,3 @@
-Below is a sample README file that explains the project, setup instructions, and usage details:
-
----
-
 # Show.CO Task Management System
 
 A simple, full-stack task management application that allows users to create, view, update, and delete tasks along with managing task categories and priorities. The system is built using Node.js, Express, PostgreSQL, HTML, CSS, and JavaScript.
