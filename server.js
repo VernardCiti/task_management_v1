@@ -185,6 +185,17 @@ app.delete('/categories/:id', (req, res) => {
     res.json({ message: 'Category deleted' });
   });
 });
+// Example: Update task using PUT (server side)
+app.put('/tasks/:id', (req, res) => {
+  const taskId = req.params.id;
+  const { title, task_date, description, category, priority, completed } = req.body;
+  const sql = `UPDATE tasks
+               SET title = ?, task_date = ?, description = ?, category = ?, priority = ?, completed = ?
+               WHERE id = ?`;
+  const params = [title, task_date, description, category, priority, completed ? 1 : 0, taskId];
+  // ... rest of update logic
+});
+
 
 // Start the server
 app.listen(port, () => {

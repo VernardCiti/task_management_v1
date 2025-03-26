@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Activate home nav link as needed
   const homeLink = document.querySelector('.nav a[href="#home"]');
   if (homeLink) homeLink.classList.add('active');
+  refreshTasks();  // Fetch tasks when the DOM is ready
 });
 
 // Global hash navigation listener (optional)
@@ -19,10 +20,19 @@ document.addEventListener('click', (e) => {
   });
 });
 
+// Global tasks array to keep track of tasks (should be in sync with your backend)
 let tasks = [];
+
+// ----------------------
+// Existing navigation & modal code remains here...
+// ----------------------
 
 // Modal Functions
 function showTaskForm() {
+  // Clear previous form data if needed
+  document.getElementById('taskForm').reset();
+  document.getElementById('taskId').value = '';
+  document.getElementById('modalTitle').textContent = 'Add Task';
   document.getElementById('taskModal').style.display = 'block';
 }
 
@@ -41,7 +51,7 @@ function closeCategoryForm() {
   document.getElementById('categoryForm').reset();
 }
 
-// Error Handling
+// Error Handling Functions
 function showError(element, message) {
   const formGroup = element.closest('.form-group');
   formGroup.classList.add('error');
@@ -63,7 +73,8 @@ function clearErrors() {
   });
 }
 
-// Handle Category Addition using Axios or direct update
+// ----------------------
+// Category Form Submission remains largely unchanged
 document.getElementById('categoryForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const newCategory = document.getElementById('newCategory').value.trim();
@@ -71,8 +82,7 @@ document.getElementById('categoryForm').addEventListener('submit', async functio
     showError(document.getElementById('newCategory'), 'Category name is required');
     return;
   }
-  // Optionally post to server:
-  // await axios.post('http://localhost:3000/categories', { name: newCategory });
+  // Optionally, post to server here...
   const select = document.getElementById('taskCategory');
   const option = document.createElement('option');
   option.value = newCategory;
@@ -80,83 +90,188 @@ document.getElementById('categoryForm').addEventListener('submit', async functio
   select.appendChild(option);
   closeCategoryForm();
 });
+// ----------------------
 
-// Handle Task Submission using Axios
+// Task Form Submission - Handles both creation and update
 document.getElementById('taskForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   clearErrors();
-  const formElements = {
-    title: this.querySelector('input[type="text"]'),
-    date: this.querySelector('input[type="date"]'),
-    description: this.querySelector('textarea'),
-    category: this.querySelector('#taskCategory'),
-    priority: this.querySelector('input[name="priority"]:checked')
-  };
 
+  // Gather form values
+  const taskId = document.getElementById('taskId').value.trim();
+  const title = document.getElementById('taskTitle').value.trim();
+  const taskDate = document.getElementById('taskDate').value;
+  const description = document.getElementById('taskDescription').value.trim();
+  const category = document.getElementById('taskCategory').value;
+  const priorityRadio = document.querySelector('input[name="priority"]:checked');
+  const priority = priorityRadio ? priorityRadio.value : '';
+
+  // Basic Validation
   let isValid = true;
-  if (!formElements.title.value.trim()) {
-    showError(formElements.title, 'Title is required');
+  if (!title) {
+    showError(document.getElementById('taskTitle'), 'Title is required');
     isValid = false;
   }
-  if (!formElements.date.value) {
-    showError(formElements.date, 'Date is required');
+  if (!taskDate) {
+    showError(document.getElementById('taskDate'), 'Date is required');
     isValid = false;
   }
-  if (!formElements.priority) {
+  if (!priority) {
     showError(document.querySelector('.priority-options'), 'Priority is required');
     isValid = false;
   }
   if (!isValid) return;
-  
-  const task = {
-    title: formElements.title.value.trim(),
-    task_date: formElements.date.value,
-    description: formElements.description.value.trim(),
-    category: formElements.category.value,
-    priority: formElements.priority.value
+
+  // Build task object
+  const taskData = {
+    title,
+    task_date: taskDate,
+    description,
+    category,
+    priority
   };
 
   try {
-    const response = await axios.post('http://localhost:3000/tasks', task, {
-      headers: { 'Content-Type': 'application/json' }
-    });
-    renderTask(response.data);
+    if (taskId) {
+      // Update existing task via PATCH
+      const response = await axios.patch(`http://localhost:3000/tasks/${taskId}`, taskData, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      // Update local array and refresh UI
+      const index = tasks.findIndex(t => t.id === parseInt(taskId));
+      if (index >= 0) {
+        tasks[index] = { ...tasks[index], ...response.data };
+      }
+      refreshTasks();
+    } else {
+      // Create new task via POST
+      const response = await axios.post('http://localhost:3000/tasks', taskData, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      tasks.push(response.data);
+      renderTask(response.data);
+    }
     closeTaskForm();
   } catch (err) {
-    console.error('Error adding task:', err);
+    console.error('Error saving task:', err);
   }
 });
 
-// Render Task on the UI
+// ----------------------
+// Render Task as Card
 function renderTask(task) {
   const taskList = document.getElementById('taskList');
   const taskCard = document.createElement('div');
   taskCard.className = `task-card ${task.priority.toLowerCase()}`;
+
   taskCard.innerHTML = `
-    <button class="delete-btn" onclick="deleteTask(${task.id})">×</button>
-    <h3>${task.title}</h3>
+    <h2>${task.title}</h2>
     <div class="task-meta">
       <span>📅 ${task.task_date}</span>
       <span>📁 ${task.category}</span>
       <span>⚠️ ${task.priority}</span>
     </div>
-    ${task.description ? `<p class="task-description">${task.description}</p>` : ''}
+    ${ task.description ? `<p class="task-description">${task.description}</p>` : '' }
+    <hr class="divider" />
+    <div class="task-footer">
+      <!-- Complete button -->
+      <button class="complete-btn" onclick="completeTask(${task.id})">Complete</button>
+      <!-- Icon group: Share, Favorite, Delete, Edit -->
+      <div class="icon-group">
+        <button class="icon-btn" title="Share"><i class="fa-solid fa-link"></i></button>
+        <button class="icon-btn" title="Favorite"><i class="fa-solid fa-star"></i></button>
+        <button class="icon-btn" title="Delete" onclick="deleteTask(${task.id})"><i class="fa-solid fa-trash"></i></button>
+        <button class="icon-btn" title="Edit" onclick="editTask(${task.id})"><i class="fa-solid fa-pen"></i></button>
+      </div>
+    </div>
   `;
+  
+  // Add new task card at the top of the list
   taskList.prepend(taskCard);
 }
 
-// Delete Task using Axios
+// ----------------------
+// Delete Task Function (unchanged except for DOM removal)
 async function deleteTask(taskId) {
   try {
     const response = await axios.delete(`http://localhost:3000/tasks/${taskId}`);
     if (response.status === 200) {
       document.querySelector(`[onclick="deleteTask(${taskId})"]`).closest('.task-card').remove();
+      tasks = tasks.filter(task => task.id !== taskId);
     }
   } catch (err) {
     console.error('Error deleting task:', err);
   }
 }
 
+// ----------------------
+// Complete Task Function - Marks task as complete
+function completeTask(taskId) {
+  const taskIndex = tasks.findIndex(t => t.id === taskId);
+  if (taskIndex < 0) return;
+
+  // Mark task as complete locally (and add a 'completed' flag if needed)
+  tasks[taskIndex].completed = true;
+
+  // Use PUT instead of PATCH since your server is configured for PUT
+  axios.put(`http://localhost:3000/tasks/${taskId}`, { 
+    ...tasks[taskIndex],
+    completed: true
+  }, {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(() => {
+      // Mark the card visually as completed
+      const card = document.querySelector(`[onclick="deleteTask(${taskId})"]`)?.closest('.task-card');
+      if (card) {
+        card.classList.add('completed');
+      }
+    })
+    .catch(err => {
+      console.error('Error marking task complete:', err);
+    });
+}
+
+// ----------------------
+// Edit Task Function - Populates the form with existing task data
+function editTask(taskId) {
+  const task = tasks.find(t => t.id === taskId);
+  if (!task) return;
+
+  // Populate the form fields with the task's data
+  document.getElementById('taskId').value = task.id;
+  document.getElementById('taskTitle').value = task.title;
+  document.getElementById('taskDate').value = task.task_date;
+  document.getElementById('taskDescription').value = task.description;
+  document.getElementById('taskCategory').value = task.category;
+  
+  // Set the priority radio button
+  const radios = document.querySelectorAll('input[name="priority"]');
+  radios.forEach(radio => {
+    radio.checked = (radio.value === task.priority);
+  });
+
+  // Change modal title to indicate editing
+  document.getElementById('modalTitle').textContent = 'Edit Task';
+  showTaskForm();
+}
+
+// ----------------------
+// Refresh Tasks - Fetch and re-render tasks from the server
+async function refreshTasks() {
+  try {
+    const response = await axios.get('http://localhost:3000/tasks');
+    tasks = response.data;
+    document.getElementById('taskList').innerHTML = '';
+    tasks.forEach(task => {
+      renderTask(task);
+    });
+  } catch (err) {
+    console.error('Error fetching tasks:', err);
+  }
+}
+
+// ----------------------
 // Close modals when clicking outside
 window.onclick = function(event) {
   if (event.target.className === 'modal') {
@@ -165,3 +280,6 @@ window.onclick = function(event) {
     if (event.target.id === 'categoryModal') closeCategoryForm();
   }
 };
+
+// ----------------------
+// Optional: Activate navigation link logic remains here...
