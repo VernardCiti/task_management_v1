@@ -1,110 +1,69 @@
-# Show.CO Task Management System
+Here's a simple and updated README for your task management system:  
 
-A simple, full-stack task management application that allows users to create, view, update, and delete tasks along with managing task categories and priorities. The system is built using Node.js, Express, PostgreSQL, HTML, CSS, and JavaScript.
+---
 
-## Features
+# Task Management System  
 
-- **Task CRUD Operations:** Create, read, update, and delete tasks.
-- **Category Management:** Add and remove categories for task organization.
-- **Responsive UI:** Modern, responsive design with a sidebar, modals, and interactive task cards.
-- **RESTful API:** Backend built with Node.js and Express to handle all data operations.
-- **Persistent Storage:** Uses PostgreSQL to store tasks and categories.
+## Overview  
+A simple web-based task management system that allows users to create, update, complete, and delete tasks. Tasks can be categorized and prioritized for better organization.  
 
-## Project Structure
+## Features  
+✅ Create new tasks with title, description, category, priority, and due date  
+✅ Mark tasks as completed or incomplete  
+✅ Edit or delete tasks  
+✅ Categorize tasks for better organization  
+✅ Persist data using a backend database  
+✅ Responsive and user-friendly interface  
 
-```
-task_management/
-├── css/
-│   └── styles.css        # Contains all custom styles for the UI.
-├── js/
-│   └── main.js           # Contains client-side JavaScript for DOM manipulation, modals, and API calls.
-├── html/
-│   └── index.html        # The main HTML file that structures the UI.
-└── server.js             # Express server file handling API endpoints and PostgreSQL connection.
-```
+## Technologies Used  
+- **Frontend:** HTML, CSS, JavaScript (Axios for API requests)  
+- **Backend:** Node.js, Express.js  
+- **Database:** SQLite / MySQL (Adjust based on your setup)  
 
-## Prerequisites
+## Installation & Setup  
 
-- **Node.js** (v14+ recommended)
-- **PostgreSQL**
-- **npm** (Node Package Manager)
+1. **Clone the Repository**  
+   ```sh
+   git clone https://github.com/your-repo/task-manager.git
+   cd task-manager
+   ```
 
-## Setup Instructions
+2. **Install Dependencies**  
+   ```sh
+   npm install
+   ```
 
-### 1. Clone the Repository
+3. **Set Up the Database**  
+   Run the SQL script to create the tasks table:  
+   ```sql
+   CREATE TABLE tasks (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       title TEXT NOT NULL,
+       description TEXT,
+       task_date DATE,
+       category TEXT,
+       priority TEXT,
+       completed INTEGER DEFAULT 0
+   );
+   ```
 
-```bash
-git clone <repository-url>
-cd task_management
-```
+4. **Start the Backend Server**  
+   ```sh
+   node server.js
+   ```
 
-### 2. Install Dependencies
+5. **Run the Frontend**  
+   Open `index.html` in your browser or serve it using a local server.  
 
-```bash
-npm install
-```
+## API Endpoints  
+| Method | Endpoint         | Description               |
+|--------|-----------------|---------------------------|
+| GET    | `/tasks`        | Fetch all tasks           |
+| POST   | `/tasks`        | Create a new task         |
+| PUT    | `/tasks/:id`    | Update a task             |
+| DELETE | `/tasks/:id`    | Delete a task             |
 
-### 3. Configure Environment Variables
-
-Create a `.env` file in the project root with the following content (update with your PostgreSQL credentials):
-
-```
-PG_USER=your_db_username
-PG_HOST=localhost
-PG_DATABASE=your_db_name
-PG_PASSWORD=your_db_password
-PG_PORT=5432
-PORT=3000
-```
-
-### 4. Set Up the Database
-
-Create the necessary tables in PostgreSQL:
-
-```sql
-CREATE TABLE tasks (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  task_date DATE NOT NULL,
-  description TEXT,
-  category VARCHAR(100),
-  priority VARCHAR(20),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL
-);
-```
-
-### 5. Run the Server
-
-Start the Express server by running:
-
-```bash
-node server.js
-```
-
-The server will run on the port specified in your `.env` file (default is `3000`).
-
-### 6. Access the Application
-
-Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to start using the task management system.
-
-## Usage
-
-- **Add Task:**  
-  Click on the **"Add task"** button to open the task modal. Fill out the form fields including title, date, description, category, and priority, then submit the form to create a new task.
-
-- **Add Category:**  
-  Click on the **"Add category"** button to open the category modal. Enter a new category name and submit the form. The new category will be added to the task form's category dropdown.
-
-- **Manage Tasks:**  
-  Tasks are displayed as cards in the main view. Each card shows task details like title, date, category, and priority. Use the delete button (×) on each card to remove a task.
-
-## Technologies Used
-
-- **Frontend:** HTML, CSS, JavaScript, Axios (for HTTP requests)
-- **Backend:** Node.js, Express, PostgreSQL
-- **Design:** Custom CSS with modern design principles, Font Awesome for icons
+## Issues & Debugging  
+If completed tasks reappear after refresh or categories disappear:  
+- Ensure updates are correctly saved in the database (`completed` and `category` fields).  
+- Verify that the frontend correctly fetches and displays the latest data.  
