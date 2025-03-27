@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const homeLink = document.querySelector('.nav a[href="#home"]');
   if (homeLink) homeLink.classList.add('active');
   refreshTasks();  // Fetch tasks when the DOM is ready
+  generateCalendar();
 });
 
 // Global hash navigation listener (optional)
@@ -22,6 +23,7 @@ document.addEventListener('click', (e) => {
 
 // Global tasks array to keep track of tasks (should be in sync with your backend)
 let tasks = [];
+const API_URL = "https://task-management-v1.onrender.com";
 
 // ----------------------
 // Existing navigation & modal code remains here...
@@ -134,7 +136,7 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
   try {
     if (taskId) {
       // Update existing task via PATCH
-      const response = await axios.patch(`http://localhost:3000/tasks/${taskId}`, taskData, {
+      const response = await axios.patch(`${API_URL}/tasks/${taskId}`, taskData, {
         headers: { 'Content-Type': 'application/json' }
       });
       // Update local array and refresh UI
@@ -145,7 +147,7 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
       refreshTasks();
     } else {
       // Create new task via POST
-      const response = await axios.post('http://localhost:3000/tasks', taskData, {
+      const response = await axios.post(`${API_URL}/tasks`, taskData, {
         headers: { 'Content-Type': 'application/json' }
       });
       tasks.push(response.data);
@@ -194,7 +196,7 @@ function renderTask(task) {
 // Delete Task Function (unchanged except for DOM removal)
 async function deleteTask(taskId) {
   try {
-    const response = await axios.delete(`http://localhost:3000/tasks/${taskId}`);
+    const response = await axios.delete(`${API_URL}/tasks/${taskId}`);
     if (response.status === 200) {
       document.querySelector(`[onclick="deleteTask(${taskId})"]`).closest('.task-card').remove();
       tasks = tasks.filter(task => task.id !== taskId);
@@ -214,7 +216,7 @@ function completeTask(taskId) {
   tasks[taskIndex].completed = true;
 
   // Use PUT instead of PATCH since your server is configured for PUT
-  axios.put(`http://localhost:3000/tasks/${taskId}`, { 
+  axios.put(`${API_URL}/tasks/${taskId}`, { 
     ...tasks[taskIndex],
     completed: true
   }, {
@@ -260,7 +262,7 @@ function editTask(taskId) {
 // Refresh Tasks - Fetch and re-render tasks from the server
 async function refreshTasks() {
   try {
-    const response = await axios.get('http://localhost:3000/tasks');
+    const response = await axios.get('${API_URL}/tasks');
     tasks = response.data;
     document.getElementById('taskList').innerHTML = '';
     tasks.forEach(task => {
@@ -268,6 +270,65 @@ async function refreshTasks() {
     });
   } catch (err) {
     console.error('Error fetching tasks:', err);
+  }
+}
+// Calendar Logic
+// Modified Calendar Logic
+function generateCalendar(date = new Date()) {
+  const calendarBody = document.querySelector('.calendar-body');
+  const currentMonthElement = document.getElementById('currentMonth');
+  
+  // Clear previous calendar
+  calendarBody.innerHTML = '';
+  
+  // Get month/year and setup dates
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const today = new Date();
+  
+  // Update header
+  currentMonthElement.textContent = 
+    `${date.toLocaleString('default', { month: 'long' })} ${year}`;
+
+  // Create calendar grid
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const startDay = firstDay.getDay(); // 0 (Sun) to 6 (Sat)
+  const daysInMonth = lastDay.getDate();
+
+  // Create weekdays header
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  calendarBody.innerHTML += `
+    <div class="calendar-week">
+      ${weekdays.map(day => `<div class="calendar-weekday">${day}</div>`).join('')}
+    </div>
+    <div class="calendar-days"></div>
+  `;
+
+  const daysContainer = calendarBody.querySelector('.calendar-days');
+  
+  // Add empty cells for days before the first day
+  for (let i = 0; i < startDay; i++) {
+    daysContainer.innerHTML += `<div class="calendar-day empty"></div>`;
+  }
+
+  // Add current month's days
+  for (let day = 1; day <= daysInMonth; day++) {
+    const isToday = day === today.getDate() && 
+                    month === today.getMonth() && 
+                    year === today.getFullYear();
+    daysContainer.innerHTML += `
+      <div class="calendar-day${isToday ? ' today' : ''}">${day}</div>
+    `;
+  }
+
+  // Calculate total cells needed (6 rows × 7 days)
+  const totalCells = 42; // 6 weeks × 7 days
+  const remainingCells = totalCells - (startDay + daysInMonth);
+  
+  // Add empty cells for remaining days
+  for (let i = 0; i < remainingCells; i++) {
+    daysContainer.innerHTML += `<div class="calendar-day empty"></div>`;
   }
 }
 

@@ -374,15 +374,115 @@ footer {
   opacity: 0.9;
 }
 
+/* Enhanced Right Panel Layout */
 .right-panel {
-  
-  width: 100%;
-  background: linear-gradient(180deg, #cb75eb, #cb75eb);
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0; /* space between cards */
-  font-family: Arial, sans-serif;
+  display: grid;
+  gap: 1.5rem;
+  height: fit-content;
+  background: linear-gradient(180deg, rgba(203, 117, 235, 0.95), rgba(203, 117, 235, 0.95));
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Styles */
+.calendar-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1.0rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-box header {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+#currentMonth {
+  color: #2d3436;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+#prevMonth, #nextMonth {
+  background: linear-gradient(135deg, #cb75eb, #7855a5);
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+#prevMonth:hover, #nextMonth:hover {
+  transform: scale(1.05);
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(40px, 1fr));
+  gap: 1px;
+}
+
+.calendar-week {
+  display: contents;
+}
+
+.calendar-weekday {
+  font-size: 0.8rem;
+  padding: 0.575rem 0.25rem;
+  background: rgba(203, 117, 235, 0.1);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #7855a5;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.calendar-days {
+  display: contents;
+}
+
+.calendar-day {
+  /* padding: 0.875rem 0.25rem; */
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #2d3436;
+  background: rgba(203, 117, 235, 0.03);
+  transition: all 0.2s ease;
   position: relative;
+  
+}
+
+.calendar-day.empty {
+  visibility: hidden;
+  background: transparent;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: rgba(203, 117, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+.calendar-day.today {
+  background: linear-gradient(135deg, #cb75eb, #7855a5);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* RESPONSIVE DESIGN */
@@ -395,6 +495,20 @@ footer {
     border-bottom: 1px solid #eee;
     box-shadow: none;
   }
+  
+  .calendar-box {
+    padding: 1rem;
+  }
+  
+  .calendar-day {
+    min-height: 55px;
+    font-size: 0.85rem;
+  }
+  
+  #currentMonth {
+    font-size: 1.05rem;
+  }
+
   .tasks-row {
     grid-template-columns: 1fr;
   }
@@ -406,4 +520,5 @@ footer {
     gap: 1rem;
     text-align: center;
   }
+  
 }
