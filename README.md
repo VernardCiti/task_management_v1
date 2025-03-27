@@ -1,8 +1,4 @@
-Here's a simple and updated README for your task management system:  
-
----
-
-# Task Management System  
+# Task Management System link: [Website](https://vernardciti.github.io/task_management_v1/)
 
 ## Overview  
 A simple web-based task management system that allows users to create, update, complete, and delete tasks. Tasks can be categorized and prioritized for better organization.  
