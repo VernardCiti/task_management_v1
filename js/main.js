@@ -178,10 +178,10 @@ function renderTask(task) {
       <button class="complete-btn" onclick="completeTask(${task.id})">Complete</button>
       <!-- Icon group: Share, Favorite, Delete, Edit -->
       <div class="icon-group">
-        <button class="icon-btn" title="Share"><i class="fa-solid fa-link"></i></button>
-        <button class="icon-btn" title="Favorite"><i class="fa-solid fa-star"></i></button>
-        <button class="icon-btn" title="Delete" onclick="deleteTask(${task.id})"><i class="fa-solid fa-trash"></i></button>
-        <button class="icon-btn" title="Edit" onclick="editTask(${task.id})"><i class="fa-solid fa-pen"></i></button>
+        <button class="icon-btn" title="Share"><i class="fa-solid fa-link" style="color: #6A3DDB;"></i></button>
+        <button class="icon-btn" title="Favorite"><i class="fa-solid fa-star" style="color: #6A3DDB;"></i></button>
+        <button class="icon-btn" title="Delete" onclick="deleteTask(${task.id})"><i class="fa-solid fa-trash" style="color: #6A3DDB;"></i></button>
+        <button class="icon-btn" title="Edit" onclick="editTask(${task.id})"><i class="fa-solid fa-pen" style="color: #6A3DDB;"></i></button>
       </div>
     </div>
   `;
