@@ -1,12 +1,11 @@
-# Task Management System link: [Website](https://vernardciti.github.io/task_management_v1/)
+# MVP Task Management System link: [Website](https://vernardciti.github.io/task_management_v1/)
 
 ## Overview  
 A simple web-based task management system that allows users to create, update, complete, and delete tasks. Tasks can be categorized and prioritized for better organization.  
 
-## Features  
+## Features(Under development) 
 ✅ Create new tasks with title, description, category, priority, and due date  
-✅ Mark tasks as completed or incomplete  
-✅ Edit or delete tasks  
+✅ Mark tasks as completed or incomplete    
 ✅ Categorize tasks for better organization  
 ✅ Persist data using a backend database  
 ✅ Responsive and user-friendly interface  
