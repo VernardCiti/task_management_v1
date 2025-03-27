@@ -23,6 +23,7 @@ document.addEventListener('click', (e) => {
 
 // Global tasks array to keep track of tasks (should be in sync with your backend)
 let tasks = [];
+const API_URL = "https://task-management-v1.onrender.com";
 
 // ----------------------
 // Existing navigation & modal code remains here...
@@ -135,7 +136,7 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
   try {
     if (taskId) {
       // Update existing task via PATCH
-      const response = await axios.patch(`http://localhost:3000/tasks/${taskId}`, taskData, {
+      const response = await axios.patch(`${API_URL}/tasks/${taskId}`, taskData, {
         headers: { 'Content-Type': 'application/json' }
       });
       // Update local array and refresh UI
@@ -146,7 +147,7 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
       refreshTasks();
     } else {
       // Create new task via POST
-      const response = await axios.post('http://localhost:3000/tasks', taskData, {
+      const response = await axios.post(`${API_URL}/tasks`, taskData, {
         headers: { 'Content-Type': 'application/json' }
       });
       tasks.push(response.data);
@@ -195,7 +196,7 @@ function renderTask(task) {
 // Delete Task Function (unchanged except for DOM removal)
 async function deleteTask(taskId) {
   try {
-    const response = await axios.delete(`http://localhost:3000/tasks/${taskId}`);
+    const response = await axios.delete(`${API_URL}/tasks/${taskId}`);
     if (response.status === 200) {
       document.querySelector(`[onclick="deleteTask(${taskId})"]`).closest('.task-card').remove();
       tasks = tasks.filter(task => task.id !== taskId);
@@ -215,7 +216,7 @@ function completeTask(taskId) {
   tasks[taskIndex].completed = true;
 
   // Use PUT instead of PATCH since your server is configured for PUT
-  axios.put(`http://localhost:3000/tasks/${taskId}`, { 
+  axios.put(`${API_URL}/tasks/${taskId}`, { 
     ...tasks[taskIndex],
     completed: true
   }, {
@@ -261,7 +262,7 @@ function editTask(taskId) {
 // Refresh Tasks - Fetch and re-render tasks from the server
 async function refreshTasks() {
   try {
-    const response = await axios.get('http://localhost:3000/tasks');
+    const response = await axios.get('${API_URL}/tasks');
     tasks = response.data;
     document.getElementById('taskList').innerHTML = '';
     tasks.forEach(task => {
